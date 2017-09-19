@@ -57,3 +57,5 @@ typings/
 # dotenv environment variables file
 .env
 
+# node modules in client
+/client/node_modules
