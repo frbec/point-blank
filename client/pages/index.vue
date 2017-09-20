@@ -1,29 +1,46 @@
 <template>
-  <section class="container">
-    <div>
-      <logo/>
-      <h1 class="title">
-        client
-      </h1>
-      <h2 class="subtitle">
-        Nuxt.js / contentful browser client
-      </h2>
-      <div class="links">
-        <a href="https://nuxtjs.org/" target="_blank" class="button--green">Documentation</a>
-        <a href="https://github.com/nuxt/nuxt.js" target="_blank" class="button--grey">GitHub</a>
-      </div>
-    </div>
+  <section>
+    <!-- render data of the person -->
+    <h1>{{ person.fields.name }}</h1>
+    <img :src="person.fields.image.fields.file.url + '?w=300'">
+    <p>{{ person.fields.shortBio }}</p>
+    <!-- render blog posts -->
+    <ul>
+      <li v-for="post in posts">
+        {{ post.fields.title }}
+      </li>
+    </ul>
   </section>
 </template>
 
 <script>
-import Logo from '~/components/Logo.vue'
+  import {createClient} from '~/plugins/contentful.js'
 
-export default {
-  components: {
-    Logo
+  const client = createClient()
+
+  export default {
+    // `env` is available in the context object
+    asyncData ({env}) {
+      return Promise.all([
+        // fetch the owner of the blog
+        client.getEntries({
+          'sys.id': env.CTF_PERSON_ID
+        }),
+        // fetch all blog posts sorted by creation date
+        client.getEntries({
+          'content_type': env.CTF_BLOG_POST_TYPE_ID,
+          order: '-sys.createdAt'
+        })
+      ]).then(([entries, posts]) => {
+        // return data that should be available
+        // in the template
+        return {
+          person: entries.items[0],
+          posts: posts.items
+        }
+      }).catch(console.error)
+    }
   }
-}
 </script>
 
 <style>
