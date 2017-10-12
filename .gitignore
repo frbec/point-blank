@@ -59,3 +59,6 @@ typings/
 
 # node modules in client
 /client/node_modules
+
+# MacOS system files
+.DS_Store
