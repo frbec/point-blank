@@ -1,0 +1,17 @@
+<svg width="200" height="200" viewBox="0 0 200 200" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<title>Desktop HD</title>
+<desc>Created using Figma</desc>
+<g id="Canvas" transform="translate(-2953 603)">
+<clipPath id="clip-0" clip-rule="evenodd">
+<path d="M 2953 -603L 3153 -603L 3153 -403L 2953 -403L 2953 -603Z" fill="#FFFFFF"/>
+</clipPath>
+<g id="Desktop HD" clip-path="url(#clip-0)">
+<g id="Star">
+<use xlink:href="#path0_fill" transform="translate(3048 -507)" fill="#000000" fill-opacity="0.5"/>
+</g>
+</g>
+</g>
+<defs>
+<path id="path0_fill" d="M 4.5 0L 5.93812 2.52059L 8.77975 3.10942L 6.82693 5.25607L 7.14503 8.14058L 4.5 6.94668L 1.85497 8.14058L 2.17307 5.25607L 0.220246 3.10942L 3.06188 2.52059L 4.5 0Z"/>
+</defs>
+</svg>

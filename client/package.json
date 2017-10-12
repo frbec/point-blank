@@ -14,7 +14,11 @@
   },
   "dependencies": {
     "contentful": "^4.6.1",
-    "nuxt": "^1.0.0-rc11"
+    "fs": "0.0.1-security",
+    "nuxt": "^1.0.0-rc11",
+    "stylus": "^0.54.5",
+    "stylus-loader": "^3.0.1",
+    "vue-markdown": "^2.2.4"
   },
   "devDependencies": {
     "babel-eslint": "^7.2.3",
@@ -25,6 +29,9 @@
     "eslint-plugin-import": "^2.7.0",
     "eslint-plugin-node": "^5.1.1",
     "eslint-plugin-promise": "^3.5.0",
-    "eslint-plugin-standard": "^3.0.1"
+    "eslint-plugin-standard": "^3.0.1",
+    "fs": "0.0.1-security",
+    "stylus": "^0.54.5",
+    "stylus-loader": "^3.0.1"
   }
 }

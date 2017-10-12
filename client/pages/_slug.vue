@@ -1,0 +1,41 @@
+<template>
+  <main>
+    <section class="hero">
+      <img :src="post.fields.heroImage.fields.file.url + '?fit=fill'"
+           class="">
+      <h1>{{ post.fields.title }}</h1>
+    </section>
+    <section class="content">
+      <p><vue-markdown>{{ post.fields.body }}</vue-markdown></p>
+    </section>
+  </main>
+</template>
+
+<script>
+  import VueMarkdown from 'vue-markdown'
+  import {createClient} from '~/plugins/contentful.js'
+
+  const client = createClient()
+
+  export default {
+    // `env` is available in the context object
+    asyncData ({ env, params }) {
+      return client.getEntries({
+        'content_type': env.CTF_BLOG_POST_TYPE_ID,
+        'fields.slug': params.slug
+      }).then(entries => {
+        return {
+          post: entries.items[0]
+        }
+      })
+        .catch(console.error)
+    },
+    components: {
+      VueMarkdown
+    },
+    data: function () {
+      return {
+      }
+    }
+  }
+</script>

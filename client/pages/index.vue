@@ -1,19 +1,31 @@
 <template>
-  <section>
-    <!-- render data of the person -->
-    <h1>{{ person.fields.name }}</h1>
-    <img :src="person.fields.image.fields.file.url + '?w=300'">
-    <p>{{ person.fields.shortBio }}</p>
-    <!-- render blog posts -->
-    <ul>
-      <li v-for="post in posts">
-        {{ post.fields.title }}
-      </li>
-    </ul>
-  </section>
+  <main>
+    <!-- move to article page <p class="header__title">{{ post.fields.title }}</p> -->
+    <section id="intro">
+      <img class="logo" src="../assets/img/nav_logo.svg" height="" width="100%">
+      <img class="profile rounded"
+           :src="person.fields.image.fields.file.url + '?fit=fill&w=200'">
+      <p class="intro_textbox rounded">{{ introText }}</p>
+      <div class="notice rounded">
+        <h2>Get in touch</h2>
+        <p>Call me on +46 7 03 08 05 22</p>
+        <p>Send an email to fredrik@beckius.design</p>
+        <p>Or connect with me on LinkedIn</p>
+      </div>
+    </section>
+    <section class="divider">
+      <h2>Portfolio Projects</h2>
+    </section>
+    <section id="portfolio">
+      <article-preview v-for="post in posts" :key="post.slug" :post="post"></article-preview>
+    </section>
+    <footer><p>(C) Fredrik Beckius 2017</p></footer>
+  </main>
 </template>
 
 <script>
+  import VueMarkdown from 'vue-markdown'
+  import articlePreview from '~/components/article-preview.vue'
   import {createClient} from '~/plugins/contentful.js'
 
   const client = createClient()
@@ -39,37 +51,15 @@
           posts: posts.items
         }
       }).catch(console.error)
+    },
+    components: {
+      VueMarkdown,
+      'article-preview': articlePreview
+    },
+    data: function () {
+      return {
+        'introText': "I’m a recently graduated Interaction Designer.\nWith one foot in programming and another in physical product design, my expertise lies in using my knowledge from these disciplines to achieve better results, whether I'm working with GUIs or mixed interfaces. My background consists of broad theoretical knowledge in user research and concept development, coupled with practical usage in several projects as a student, consultant or part-time employee."
+      }
     }
   }
 </script>
-
-<style>
-.container {
-  min-height: 100vh;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  text-align: center;
-}
-
-.title {
-  font-family: "Quicksand", "Source Sans Pro", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif; /* 1 */
-  display: block;
-  font-weight: 300;
-  font-size: 100px;
-  color: #35495e;
-  letter-spacing: 1px;
-}
-
-.subtitle {
-  font-weight: 300;
-  font-size: 42px;
-  color: #526488;
-  word-spacing: 5px;
-  padding-bottom: 15px;
-}
-
-.links {
-  padding-top: 15px;
-}
-</style>

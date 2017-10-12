@@ -5,16 +5,23 @@ module.exports = {
   ** Headers of the page
   */
   head: {
-    title: 'client',
+    title: 'Fredrik Beckius\' Portfolio',
     meta: [
       { charset: 'utf-8' },
       { name: 'viewport', content: 'width=device-width, initial-scale=1' },
       { hid: 'description', name: 'description', content: 'Nuxt.js / contentful browser client' }
     ],
     link: [
-      { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }
+      { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' },
+      { rel: 'stylesheet', href: 'https://fonts.googleapis.com/css?family=Josefin+Slab:400,400i,700,Josefin+Sans:400,700'}
     ]
   },
+  /*
+  ** Use stylus for CSS
+  */
+  css: [
+    '~/assets/css/main.styl'
+  ],
   /*
   ** Customize the progress bar color
   */
