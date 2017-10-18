@@ -6,7 +6,7 @@
       <h1>{{ post.fields.title }}</h1>
     </section>
     <section class="content">
-      <p><vue-markdown>{{ post.fields.body }}</vue-markdown></p>
+      <vue-markdown>{{ post.fields.body }}</vue-markdown>
     </section>
   </main>
 </template>
@@ -21,7 +21,7 @@
     // `env` is available in the context object
     asyncData ({ env, params }) {
       return client.getEntries({
-        'content_type': env.CTF_BLOG_POST_TYPE_ID,
+        'content_type': env.CTF_PORTFOLIO_ITEM_TYPE_ID,
         'fields.slug': params.slug
       }).then(entries => {
         return {

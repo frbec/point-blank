@@ -17,7 +17,7 @@
       <h2>Portfolio Projects</h2>
     </section>
     <section id="portfolio">
-      <article-preview v-for="post in posts" :key="post.slug" :post="post"></article-preview>
+      <article-preview v-for="item in portfolio" :key="item.slug" :post="item"></article-preview>
     </section>
     <footer><p>(C) Fredrik Beckius 2017</p></footer>
   </main>
@@ -40,15 +40,15 @@
         }),
         // fetch all blog posts sorted by creation date
         client.getEntries({
-          'content_type': env.CTF_BLOG_POST_TYPE_ID,
+          'content_type': env.CTF_PORTFOLIO_ITEM_TYPE_ID,
           order: '-sys.createdAt'
         })
-      ]).then(([entries, posts]) => {
+      ]).then(([entries, portfolio]) => {
         // return data that should be available
         // in the template
         return {
           person: entries.items[0],
-          posts: posts.items
+          portfolio: portfolio.items
         }
       }).catch(console.error)
     },

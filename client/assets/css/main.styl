@@ -1,30 +1,39 @@
-@require _typography
+// FIRST SET CONSTANTS
 
 $color1 = #45E5A5
 $color2 = #0C1061
 $grey = #DBDBC3
 
 $page-width = 40rem
-$font-size = calc(16px + 4 * (100vw - 320px) / 1046)
-$font-size-multiplier = 1.07
 
-/* 16px @ 480px increasing to 24px @ 1920px */
-@media (min-width: 480px) {
-  :root {
-    font-size: calc(1rem + ((1vw - 4.8px) * 0.5556));
-    /* Where: * 0.5556 = 100 * font_Size_Difference / viewport_Width_Difference */
-  }
-}
-/* Prevent font scaling beyond this breakpoint */
-@media (min-width: 1920px) {
-  :root {
-    font-size: 24px;
-  }
-}
+// IMPORT MIXINS ETC
 
+@require _typography
+
+// SET BASE PROPERTIES
+// Apply fluid type mixin
+
+:root
+  fluid-type(font-size, 320px, 1920px, 16px, 24px)
+  line-height 1.5
+
+// Calculate rem values by multiplying min and max root font-size values
+h1
+  fluid-type(font-size, 20rem, 80rem, $h1-min, $h1-max)
+h2
+  fluid-type(font-size, 20rem, 80rem, $h2-min, $h2-max)
+h3
+  fluid-type(font-size, 20rem, 80rem, $h3-min, $h3-max)
+h4
+  fluid-type(font-size, 20rem, 80rem, $h4-min, $h4-max)
+h5
+  fluid-type(font-size, 20rem, 80rem, $h5-min, $h5-max)
+h6
+  fluid-type(font-size, 20rem, 80rem, $h6-min, $h6-max)
+
+// Page basics
 html {
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", "Ubuntu", Arial, sans-serif;
-  line-height 1.5rem
   -ms-text-size-adjust: 100%;
   -webkit-text-size-adjust: 100%;
   -moz-osx-font-smoothing: grayscale;
@@ -36,6 +45,8 @@ html {
   box-sizing: border-box;
   margin: 0;
 }
+
+// STYLING BEGINS
 
 body
   background white
@@ -156,3 +167,10 @@ footer
   max-width $page-width
   margin 0 auto
   padding-top 4rem
+  img
+    max-width 100%
+  img + em
+    display block
+    text-align center
+    width 100%
+    
