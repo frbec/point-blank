@@ -17,7 +17,7 @@
       <h2>Portfolio Projects</h2>
     </section>
     <section id="portfolio">
-      <article-preview v-for="item in portfolio" :key="item.slug" :post="item"></article-preview>
+      <article-preview v-for="post in portfolio" :key="post.slug" :post="post"></article-preview>
     </section>
     <footer><p>(C) Fredrik Beckius 2017</p></footer>
   </main>
