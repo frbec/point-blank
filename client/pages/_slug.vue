@@ -1,9 +1,12 @@
 <template>
   <main>
     <section class="hero">
+      <h1>{{ post.fields.title }}</h1>
+      <p class="tags">
+        <span v-for="tag in post.fields.tags">{{ tag }}</span>
+      </p>
       <img :src="post.fields.heroImage.fields.file.url + '?fit=fill'"
            class="">
-      <h1>{{ post.fields.title }}</h1>
     </section>
     <section class="content">
       <vue-markdown>{{ post.fields.body }}</vue-markdown>
