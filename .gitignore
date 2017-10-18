@@ -62,3 +62,6 @@ typings/
 
 # MacOS system files
 .DS_Store
+
+# Contentful
+.contentful.json
