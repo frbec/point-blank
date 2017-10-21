@@ -1,25 +1,39 @@
 <template>
   <main>
     <!-- move to article page <p class="header__title">{{ post.fields.title }}</p> -->
-    <section id="intro">
-      <img class="logo" src="../assets/img/nav_logo.svg" height="" width="100%">
-      <img class="profile rounded"
-           :src="person.fields.image.fields.file.url + '?fit=fill&w=200'">
-      <p class="intro_textbox rounded">{{ introText }}</p>
-      <div class="notice rounded">
-        <h2>Get in touch</h2>
-        <p>Call me on +46 7 03 08 05 22</p>
-        <p>Send an email to fredrik@beckius.design</p>
-        <p>Or connect with me on LinkedIn</p>
+    <section id="intro" class="full-page">
+      <div class="container">
+        <div class="top">
+          <img class="logo" alt="Beckius logo" src="../assets/img/nav_logo.svg" height="68" width="324">
+        </div>
+        <div class="middle">
+          <div class="profile">
+            <img alt="Profile picture showing Fredrik Beckius" :src="person.fields.image.fields.file.url + '?fit=fill&w=500&h=500'">
+          </div>
+          <div class="divider rounded"></div>
+          <p class="intro_textbox">{{ introText }}</p>
+        </div>
+        <div class="bottom">
+          <div class="notice">
+            <h2>Get in touch</h2>
+            <p>Call me on <span class="nowrap">+467 03 08 05 22</span><br>
+              email to fredrikbeckius on gmail.com<br>
+              or connect with me on LinkedIn</p>
+          </div>
+        </div>
       </div>
     </section>
-    <section class="divider">
-      <h2>Portfolio Projects</h2>
+    <section id="portfolio" class="full-page">
+      <div class="container">
+        <h2>Portfolio Projects</h2>
+        <div class="gallery">
+          <article-preview v-for="post in portfolio" :key="post.slug" :post="post"></article-preview>
+        </div>
+      </div>
     </section>
-    <section id="portfolio">
-      <article-preview v-for="post in portfolio" :key="post.slug" :post="post"></article-preview>
-    </section>
-    <footer><p>(C) Fredrik Beckius 2017</p></footer>
+    <footer>
+      <p>© Fredrik Beckius 2017</p>
+    </footer>
   </main>
 </template>
 
@@ -41,7 +55,7 @@
         // fetch all blog posts sorted by creation date
         client.getEntries({
           'content_type': env.CTF_PORTFOLIO_ITEM_TYPE_ID,
-          order: '-sys.createdAt'
+          order: 'fields.order'
         })
       ]).then(([entries, portfolio]) => {
         // return data that should be available

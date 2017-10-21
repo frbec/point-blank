@@ -7,7 +7,10 @@
     >
     <nuxt-link :to="{ name: 'slug', params: { slug: post.fields.slug }}" 
                class="overlay">
-        <h3>{{ post.fields.title }}</h3>
+      <div>
+        <h4>{{ post.fields.title }}</h4>
+        <!--  <p><span v-for="tag in post.fields.tags">{{ tag }}</span></p> -->
+      </div>
     </nuxt-link>
   </article>
 </template>

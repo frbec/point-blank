@@ -33,14 +33,14 @@ h6
   fluid-type(font-size, 20rem, 80rem, $h6-min, $h6-max)
 
 // Page basics
-html {
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", "Ubuntu", Arial, sans-serif;
-  -ms-text-size-adjust: 100%;
-  -webkit-text-size-adjust: 100%;
-  -moz-osx-font-smoothing: grayscale;
-  -webkit-font-smoothing: antialiased;
-  box-sizing: border-box;
-}
+html
+  font-family -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", "Ubuntu", Arial, sans-serif
+  -ms-text-size-adjust 100%
+  -webkit-text-size-adjust:100%
+  -moz-osx-font-smoothing grayscale
+  -webkit-font-smoothing antialiased
+  box-sizing border-box
+  width 100%
 
 *, *:before, *:after {
   box-sizing: border-box;
@@ -53,103 +53,141 @@ body
   background white
 
 h1, h2, h3, h4, h5, h6
-  font-family 'Josefin Sans', sans-serif
+  font-family 'Josefin Slab', serif
 
 p
-  font-family 'Josefin Slab', serif
+  font-family 'Josefin Sans', sans-serif
   padding-bottom 0.5rem
   color $color2
+
+// Front page structure
 
 main
   width 100%
   min-width 320px
 
-.rounded
-  border-radius 5px
-
-.logo
-  position relative
-  top 6rem
-  left 5rem
-  width 20rem
+footer
+  display flex
+  justify-content center
+  height 3rem
+  margin-top -@height
+  p
+    font-size 0.7rem
+    font-weight bold
 
 #intro
   width 100%
-  max-width $page-width
-  margin 0 auto
-  
-.intro_textbox
-  background $color1
-  width 40rem
-  padding 5rem 3rem
-  margin 4rem auto 0
-
-.notice
-  position relative
-  top -3rem
-  left -2rem
-  padding 2rem
-  width 23rem
-  background-color rgba($color2, .8)
-  transform skewY(2deg)
-  p, h2
-    transform skewY(-2deg)
-    color $color1
-
-.profile
-  float right
-  position relative
-  top 11rem
-  left 2rem
-  width 14rem
 
 #portfolio
-  width 100%
-  max-width 60rem
-  margin auto
-  display flex
-  flex-flow wrap row
-  justify-content left
+  position relative
 
-.divider
+.full-page
   width 100%
   max-width $page-width
+  min-height 100vh
   margin 0 auto
-  padding 3rem 0 0
-  h2
-    color $color1
+  display flex
+  align-items center
+  
+.container
+  position relative
+  width 100%
+  align-self middle
+
+// Intro section Layout
+
+.top
+  width 100%
+  padding-left 40%
+  flex-grow 1
+
+.middle
+  width 100%
+  display flex
+  flex-direction row
+  justify-content space-between
+
+.bottom
+  width 30%
+  flex-grow 1
+
+// Intro section
+
+.logo
+  width 15rem
+  margin-bottom 2rem
+  max-width 100%
+
+.intro_textbox
+  width 60%
+  padding 0
+
+.profile
+  width 30%
+  img
+    width 100%
+    height auto
+
+.notice
+  width 100%
+  margin-top 1rem
+  color $color1
+  text-align right
+  p
+    font-size 0.7rem
+    font-weight bold
+    padding-left 0.15rem
+
+.divider
+  width 1%
+  min-height 100%
+  margin .3rem 0 .5rem
+  background $color1
+
+// Portfolio section
+
+.gallery
+  width 100%
+  margin-top 1rem
+  display flex
+  flex-flow row wrap
+  justify-content left
 
 #portfolio article
   position relative
+  overflow hidden
   max-width calc(50%-1rem)
   margin-bottom 2rem
   &:nth-child(even)
     margin-left 2rem
   img
+    width 100%
     display block
+    transition 0.05s
+  &:hover img
+    transform scale(1.12)
+    transition 0.3s ease-out
   &:hover .overlay
     opacity 1
+    transition 0.2s ease
 
 .overlay
   position absolute
   top 0
   right 0
-  bottom 0
   left 0
+  bottom 0
   display flex
   justify-content center
-  background rgba(0,0,0,0.5)
+  align-items center
+  background rgba($color2,0.7)
+  color white
   opacity 0
-  h3 
-    align-self center
+  text-align center
+  text-decoration none
+  transition 0.1s ease
 
-footer
-  display flex
-  justify-content center
-
-.thumbnail
-  width 100%
-  height auto
+// Article page
 
 .hero
   position relative
@@ -165,10 +203,12 @@ footer
     width 100%
     text-align center
     span
-      padding 0.5rem 0.7rem
-      margin 0 0.5rem 2rem
+      display inline-block
+      padding 0.1rem 0.7rem
+      margin 0.5rem
       background $color1
       border-radius 5px
+      word-wrap nowrap
 
 .content
   max-width $page-width
@@ -182,4 +222,18 @@ footer
     width 100%
     font-size 0.8rem
     color $dark-grey
+  h2 + ul
+    border-radius 10px
+    background $dark-grey
+    list-style-type none
+    margin 0
+    padding 0 0.5rem
     
+// Styling
+
+.rounded
+  border-radius 5px
+
+.nowrap
+  word-wrap nowrap
+  display inline-block
