@@ -1,9 +1,9 @@
 <template>
   <article class="">
     <img class="thumbnail"
-      :src="post.fields.heroImage.fields.file.url + '?fit=scale&w=350&h=196'"
-      :srcset="`${post.fields.heroImage.fields.file.url}?w=350&h=196&fit=fill 350w, ${post.fields.heroImage.fields.file.url}?w=1000&h=562&fit=fill 1000w, ${post.fields.heroImage.fields.file.url}?w=2000&h=1125&fit=fill 2000w`"
-      sizes="(min-width: 200px) 400px, 100vw"
+      :src="post.fields.heroImage.fields.file.url + '?fit=scale&w=350&h=350'"
+      :srcset="`${post.fields.heroImage.fields.file.url}?w=387&h=258&fit=fill 368w, ${post.fields.heroImage.fields.file.url}?w=960&h=640&fit=fill 960w, ${post.fields.heroImage.fields.file.url}?w=1920&h=1280&fit=fill 1920w`"
+      sizes="(max-width: 419px) 387px, (min-width: 420px) calc(50vw-2rem), 100vw"
     >
     <nuxt-link :to="{ name: 'slug', params: { slug: post.fields.slug }}" 
                class="overlay">
