@@ -11,6 +11,9 @@
     <section class="content">
       <vue-markdown>{{ post.fields.body }}</vue-markdown>
     </section>
+    <footer>
+      <p>© Fredrik Beckius 2017</p>
+    </footer>
   </main>
 </template>
 

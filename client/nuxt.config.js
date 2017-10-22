@@ -1,3 +1,5 @@
+mode = 'spa'
+
 const config = require('./.contentful.json')
 
 module.exports = {
@@ -13,7 +15,7 @@ module.exports = {
     ],
     link: [
       { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' },
-      { rel: 'stylesheet', href: 'https://fonts.googleapis.com/css?family=Josefin+Slab:400,400i,700,Josefin+Sans:400,700'}
+      { rel: 'stylesheet', href: 'https://fonts.googleapis.com/css?family=Zilla+Slab:400,400i,700,Josefin+Sans:400,700'}
     ]
   },
   /*

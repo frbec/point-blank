@@ -6,6 +6,7 @@ $grey = #DBDBC3
 $dark-grey = #A5A5AC
 
 $page-width = 40rem
+$min-screen = 420px
 
 // IMPORT MIXINS ETC
 
@@ -15,26 +16,46 @@ $page-width = 40rem
 // Apply fluid type mixin
 
 :root
-  fluid-type(font-size, 320px, 1920px, 16px, 24px)
+  fluid-type(font-size, $min-screen, 1920px, 16px, 24px)
   line-height 1.5
 
 // Calculate rem values by multiplying min and max root font-size values
+
 h1
-  fluid-type(font-size, 20rem, 80rem, $h1-min, $h1-max)
+  fluid-type(font-size, 25rem, 80rem, $h1-min, $h1-max)
+  fluid-type(padding-top, 25rem, 80rem, (2.5rem - $h1-min), (2.5rem - $h1-max))
+  fluid-type(padding-bottom, 25rem, 80rem, .5rem, .5rem)
+  line-height 1
 h2
-  fluid-type(font-size, 20rem, 80rem, $h2-min, $h2-max)
+  fluid-type(font-size, 25rem, 80rem, $h2-min, $h2-max)
+  fluid-type(padding-top, 25rem, 80rem, (2.5rem - $h2-min), (2.5rem - $h2-max))
+  fluid-type(padding-bottom, 25rem, 80rem, .5rem, .5rem)
+  line-height 1
 h3
-  fluid-type(font-size, 20rem, 80rem, $h3-min, $h3-max)
+  fluid-type(font-size, 25rem, 80rem, $h3-min, $h3-max)
+  fluid-type(padding-top, 25rem, 80rem, (2.5rem - $h3-min), (2.5rem - $h3-max))
+  fluid-type(padding-bottom, 25rem, 80rem, .5rem, .5re)
+  line-height 1
 h4
-  fluid-type(font-size, 20rem, 80rem, $h4-min, $h4-max)
+  fluid-type(font-size, 25rem, 80rem, $h4-min, $h4-max)
+  fluid-type(padding-top, 25rem, 80rem, (1.5rem - $h4-min), (1.5rem - $h4-max))
+  fluid-type(padding-bottom, 25rem, 80rem, .5rem, .5rem)
+  line-height 1
 h5
-  fluid-type(font-size, 20rem, 80rem, $h5-min, $h5-max)
+  fluid-type(font-size, 25rem, 80rem, $h5-min, $h5-max)
+  fluid-type(padding-top, 25rem, 80rem, (1.5rem - $h5-min), (1.5rem - $h5-max))
+  fluid-type(padding-bottom, 25rem, 80rem, .5rem, .5rem)
+  line-height 1
 h6
   fluid-type(font-size, 20rem, 80rem, $h6-min, $h6-max)
+  fluid-type(padding-top, 25rem, 80rem, (1.5rem - $h6-min), (1.5rem - $h6-max))
+  fluid-type(padding-bottom, 25rem, 80rem, .5rem, .5rem)
+  line-height 1
 
 // Page basics
+
 html
-  font-family -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", "Ubuntu", Arial, sans-serif
+  font-family "Josefin Sans", sans-serif
   -ms-text-size-adjust 100%
   -webkit-text-size-adjust:100%
   -moz-osx-font-smoothing grayscale
@@ -53,11 +74,12 @@ body
   background white
 
 h1, h2, h3, h4, h5, h6
-  font-family 'Josefin Slab', serif
+  font-family 'Zilla Slab', serif
+  font-weight normal
+  letter-spacing -.06rem
 
 p
   font-family 'Josefin Sans', sans-serif
-  padding-bottom 0.5rem
   color $color2
 
 // Front page structure
@@ -69,7 +91,7 @@ main
 footer
   display flex
   justify-content center
-  height 3rem
+  height 2rem
   margin-top -@height
   p
     font-size 0.7rem
@@ -84,65 +106,90 @@ footer
 .full-page
   width 100%
   max-width $page-width
-  min-height 100vh
   margin 0 auto
+  padding 1rem
   display flex
+  justify-content center
   align-items center
+  @media screen and (min-width: ($min-screen * 2))
+    min-height 100vh
   
 .container
   position relative
   width 100%
   align-self middle
 
+.desktop
+  display none
+  @media screen and (min-width: $min-screen) and (orientation: landscape)
+    display block
+    
+.mobile
+  display block
+  @media screen and (min-width: $min-screen) and (orientation: landscape)
+    display none
+
 // Intro section Layout
 
 .top
   width 100%
-  padding-left 40%
   flex-grow 1
+  @media screen and (min-width: $min-screen) and (orientation: landscape)
+    padding-left 40%
 
 .middle
   width 100%
   display flex
-  flex-direction row
-  justify-content space-between
+  flex-direction column
+  @media screen and (min-width: $min-screen) and (orientation: landscape)
+    flex-direction row
+    justify-content space-between
 
 .bottom
-  width 30%
+  width 100%
   flex-grow 1
+  @media screen and (min-width: $min-screen) and (orientation: landscape)
+    width 30%
 
 // Intro section
 
 .logo
   width 15rem
-  margin-bottom 2rem
+  height auto
+  fluid-type(padding-bottom, 25rem, 80rem, (2.5rem - $h2-min), (2.5rem - $h2-max))  
   max-width 100%
 
 .intro_textbox
-  width 60%
+  width 100%
   padding 0
+  @media screen and (min-width: $min-screen) and (orientation: landscape)
+    width 60%
 
 .profile
-  width 30%
+  width 100%
+  margin-top .3rem
+  @media screen and (min-width: $min-screen) and (orientation: landscape)
+    width 30%
   img
     width 100%
     height auto
 
 .notice
   width 100%
-  margin-top 1rem
-  color $color1
   text-align right
-  p
-    font-size 0.7rem
-    font-weight bold
-    padding-left 0.15rem
+  + img
+    float right
+    width 20%
 
 .divider
-  width 1%
-  min-height 100%
+  width 100%
+  height 5px
   margin .3rem 0 .5rem
   background $color1
+  @media screen and (min-width: $min-screen)
+    width 1%
+    height auto
+    min-height 100%
 
 // Portfolio section
 
@@ -156,10 +203,13 @@ footer
 #portfolio article
   position relative
   overflow hidden
-  max-width calc(50%-1rem)
+  padding-bottom 2rem
   margin-bottom 2rem
-  &:nth-child(even)
-    margin-left 2rem
+  @media screen and (min-width: $min-screen)
+    max-width calc(50%-1rem)
+    padding-bottom 0
+    &:nth-child(even)
+      margin-left 2rem
   img
     width 100%
     display block
@@ -170,6 +220,7 @@ footer
   &:hover .overlay
     opacity 1
     transition 0.2s ease
+    transform scale(1)
 
 .overlay
   position absolute
@@ -180,60 +231,45 @@ footer
   display flex
   justify-content center
   align-items center
-  background rgba($color2,0.7)
-  color white
-  opacity 0
   text-align center
   text-decoration none
   transition 0.1s ease
+  @media screen and (min-width: $min-screen)
+    background rgba($color1,0.8)
+    opacity 0
+    transform scale(1.2)
+  div
+    width 100%
+    color white
+    padding-left 1.5rem
+    padding-right @padding-left
+    padding-bottom .5rem
+    p
+      color inherit
+      overflow hidden
+      white-space nowrap
+      text-overflow ellipsis
+    @media screen and (max-width: $min-screen)
+      background-color $color1
+      align-self flex-end
 
-// Article page
-
-.hero
-  position relative
-  width 100%
-  overflow hidden
-  img
-    width 100%
-    max-height 100vh
-  h1
-    width 100%
-    text-align center
-  .tags
-    width 100%
-    text-align center
-    span
-      display inline-block
-      padding 0.1rem 0.7rem
-      margin 0.5rem
-      background $color1
-      border-radius 5px
-      word-wrap nowrap
-
-.content
-  max-width $page-width
-  margin 0 auto
-  padding-top 4rem
-  img
-    max-width 100%
-  img + em
-    display block
-    text-align center
-    width 100%
-    font-size 0.8rem
-    color $dark-grey
-  h2 + ul
-    border-radius 10px
-    background $dark-grey
-    list-style-type none
-    margin 0
-    padding 0 0.5rem
-    
 // Styling
 
+.color1
+  color $color1
+
+.color2
+  color $color2
+
 .rounded
-  border-radius 5px
+  border-radius 10px
 
 .nowrap
   word-wrap nowrap
   display inline-block
+
+.compact-text
+  font-size 0.8rem
+  font-weight bold
+
+@require _slug

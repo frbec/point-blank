@@ -7,25 +7,26 @@
           <img class="logo" alt="Beckius logo" src="../assets/img/nav_logo.svg" height="68" width="324">
         </div>
         <div class="middle">
-          <div class="profile">
-            <img alt="Profile picture showing Fredrik Beckius" :src="person.fields.image.fields.file.url + '?fit=fill&w=500&h=500'">
+          <div class="profile desktop">
+            <img class="rounded" alt="Profile picture showing Fredrik Beckius" :src="person.fields.image.fields.file.url + '?fit=fill&w=500&h=500'">
           </div>
           <div class="divider rounded"></div>
           <p class="intro_textbox">{{ introText }}</p>
         </div>
         <div class="bottom">
           <div class="notice">
-            <h2>Get in touch</h2>
-            <p>Call me on <span class="nowrap">+467 03 08 05 22</span><br>
-              email to fredrikbeckius on gmail.com<br>
+            <h2 class="color1">Get in touch</h2>
+            <p class="compact-text">Call me on <span class="nowrap">+467 03 08 05 22</span><br>
+              email fredrikbeckius on gmail.com<br>
               or connect with me on LinkedIn</p>
           </div>
+          <img class="mobile rounded" alt="Profile picture showing Fredrik Beckius" :src="person.fields.image.fields.file.url + '?fit=fill&w=500&h=500'">
         </div>
       </div>
     </section>
     <section id="portfolio" class="full-page">
       <div class="container">
-        <h2>Portfolio Projects</h2>
+        <h2 class="color1">Portfolio Projects</h2>
         <div class="gallery">
           <article-preview v-for="post in portfolio" :key="post.slug" :post="post"></article-preview>
         </div>

@@ -1,0 +1,42 @@
+// Article page
+
+.hero
+  position relative
+  width 100%
+  overflow hidden
+  img
+    width 100%
+    max-height 100vh
+  h1
+    width 100%
+    text-align center
+  .tags
+    width 100%
+    text-align center
+    span
+      display inline-block
+      padding 0.1rem 0.7rem 0
+      margin 0.5rem
+      color white
+      background $color1
+      border-radius 5px
+      word-wrap nowrap
+
+.content
+  max-width $page-width
+  margin 0 auto
+  padding-top 4rem
+  img
+    max-width 100%
+  img + em
+    display block
+    text-align center
+    width 100%
+    font-size 0.8rem
+    color $dark-grey
+  h2 + ul
+    border-radius 10px
+    background $dark-grey
+    list-style-type none
+    margin 0
+    padding 0 0.5rem
