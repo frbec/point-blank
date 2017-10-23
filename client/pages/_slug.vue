@@ -9,7 +9,7 @@
            class="">
       <h1>{{ post.fields.title }}</h1>
       <p>{{ post.fields.description }}</p>
-      <p>Tags: <span v-for="tag in post.fields.tags">{{ tag }} </span></p>
+      <!-- <p>Tags: <span v-for="tag in post.fields.tags">{{ tag }} </span></p> -->
     </section>
     <section class="content">
       <div>
