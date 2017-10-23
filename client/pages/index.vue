@@ -1,6 +1,6 @@
 <template>
   <main>
-    <!-- move to article page <p class="header__title">{{ post.fields.title }}</p> -->
+    <header><a href="#intro">About<img src="../assets/img/ic_about-me.svg"></a><a href="#portfolio">Portfolio<img src="../assets/img/ic_portfolio.svg"></a></header>
     <section id="intro" class="full-page">
       <div class="container">
         <div class="top">
@@ -32,9 +32,7 @@
         </div>
       </div>
     </section>
-    <footer>
-      <p>© Fredrik Beckius 2017</p>
-    </footer>
+    <footer>© Fredrik Beckius 2017</footer>
   </main>
 </template>
 

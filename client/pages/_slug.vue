@@ -5,7 +5,11 @@
       <p class="tags">
         <span v-for="tag in post.fields.tags">{{ tag }}</span>
       </p>
-      <img :src="post.fields.heroImage.fields.file.url + '?fit=fill'"
+      <img :src="post.fields.heroImage.fields.file.url + '?fit=fill&w=500&h=333'"
+           :srcset="`${post.fields.heroImage.fields.file.url}?w=500&h=333&fit=fill 500w,
+                    ${post.fields.heroImage.fields.file.url}?w=960&h=640&fit=fill 960w,
+                    ${post.fields.heroImage.fields.file.url}?w=1920&h=1280&fit=fill 1920w`"
+           sizes="100vw"
            class="">
     </section>
     <section class="content">

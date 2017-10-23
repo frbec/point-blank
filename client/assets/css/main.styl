@@ -83,6 +83,40 @@ p
   color $color2
 
 // Front page structure
+header
+  position fixed
+  z-index 99
+  width 100%
+  height 3rem
+  display flex
+  justify-content center
+  align-items center
+  background rgba(255,255,255,0.8)
+  @media screen and (orientation: portrait)
+    display none
+  img
+    width 1rem
+    height @width
+    margin-left .5rem
+    filter gray
+    filter grayscale(1)
+    -webkit-filter gray(1)
+  a
+    color gray
+    text-decoration none
+    margin-left .5rem
+    margin-right @margin-left
+    border-bottom 2px solid transparent
+    transition 0.2s ease-out
+    &:hover
+      color $color1
+      border-bottom 2px solid @color
+      transition 0.2s ease-in
+    &:hover > img
+      filter none
+      filter none
+      -webkit-filter none
+      transition 0.2s ease-in
 
 main
   width 100%
@@ -93,9 +127,7 @@ footer
   justify-content center
   height 2rem
   margin-top -@height
-  p
-    font-size 0.7rem
-    font-weight bold
+  color gray
 
 #intro
   width 100%
