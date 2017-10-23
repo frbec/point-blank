@@ -1,14 +1,14 @@
 <template>
   <main>
     <section class="hero">
-      <h1>{{ post.fields.title }}</h1>
-      <p>{{ post.fields.description }}</p>
       <img :src="post.fields.heroImage.fields.file.url + '?fit=fill&w=500&h=' + vheight"
            :srcset="`${post.fields.heroImage.fields.file.url}?w=500&h=${vheight}&fit=fill 500w,
                     ${post.fields.heroImage.fields.file.url}?w=960&h=${vheight}&fit=fill 960w,
                     ${post.fields.heroImage.fields.file.url}?w=1920&h=${vheight}&fit=fill 1920w`"
            sizes="100vw"
            class="">
+      <h1>{{ post.fields.title }}</h1>
+      <p>{{ post.fields.description }}</p>
     </section>
     <section class="content">
       <div>
@@ -45,7 +45,7 @@
       VueMarkdown
     },
     data: function () {
-      let h = (document.getElementsByClassName('hero').offsetHeight || '')
+      let h = window.innerHeight
       return {
         'vheight': h
       }
