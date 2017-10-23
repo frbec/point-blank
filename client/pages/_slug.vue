@@ -2,29 +2,30 @@
   <main>
     <section class="hero">
       <h1>{{ post.fields.title }}</h1>
-      <p class="tags">
-        <span v-for="tag in post.fields.tags">{{ tag }}</span>
-      </p>
-      <img :src="post.fields.heroImage.fields.file.url + '?fit=fill&w=500&h=333'"
-           :srcset="`${post.fields.heroImage.fields.file.url}?w=500&h=333&fit=fill 500w,
-                    ${post.fields.heroImage.fields.file.url}?w=960&h=640&fit=fill 960w,
-                    ${post.fields.heroImage.fields.file.url}?w=1920&h=1280&fit=fill 1920w`"
+      <p>{{ post.fields.description }}</p>
+      <img :src="post.fields.heroImage.fields.file.url + '?fit=fill&w=500&h=' + vheight"
+           :srcset="`${post.fields.heroImage.fields.file.url}?w=500&h=${vheight}&fit=fill 500w,
+                    ${post.fields.heroImage.fields.file.url}?w=960&h=${vheight}&fit=fill 960w,
+                    ${post.fields.heroImage.fields.file.url}?w=1920&h=${vheight}&fit=fill 1920w`"
            sizes="100vw"
            class="">
     </section>
     <section class="content">
-      <vue-markdown>{{ post.fields.body }}</vue-markdown>
+      <div>
+        <p>{{ vheight }}</p>
+        <vue-markdown>{{ post.fields.body }}</vue-markdown>
+      </div>
+      <div>
+        <!-- put images here -->
+      </div>
     </section>
-    <footer>
-      <p>© Fredrik Beckius 2017</p>
-    </footer>
+    <footer>© Fredrik Beckius 2017</footer>
   </main>
 </template>
 
 <script>
   import VueMarkdown from 'vue-markdown'
   import {createClient} from '~/plugins/contentful.js'
-
   const client = createClient()
 
   export default {
@@ -44,7 +45,9 @@
       VueMarkdown
     },
     data: function () {
+      let h = (document.getElementsByClassName('hero').offsetHeight || '')
       return {
+        'vheight': h
       }
     }
   }
