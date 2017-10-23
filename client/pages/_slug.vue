@@ -9,14 +9,22 @@
            class="">
       <h1>{{ post.fields.title }}</h1>
       <p>{{ post.fields.description }}</p>
+      <p>Tags: <span v-for="tag in post.fields.tags">{{ tag }} </span></p>
     </section>
     <section class="content">
       <div>
-        <p>{{ vheight }}</p>
         <vue-markdown>{{ post.fields.body }}</vue-markdown>
       </div>
-      <div>
-        <!-- put images here -->
+      <div class="gallery-aside">
+        <div v-for="image in post.fields.gallery">
+          <img :src="image.fields.file.url + '?fit=fill&w=500&h=333'"
+           :srcset="`${image.fields.file.url}?w=500&fit=fill 500w,
+                    ${image.fields.file.url}?w=960&fit=fill 960w,
+                    ${image.fields.file.url}?w=1920&fit=fill 1920w`"
+           sizes="50vw"
+           class="">
+          <p>{{ image.fields.description }}</p>
+        </div>
       </div>
     </section>
     <footer>© Fredrik Beckius 2017</footer>
