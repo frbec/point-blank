@@ -53,9 +53,14 @@
       VueMarkdown
     },
     data: function () {
-      let h = window.innerHeight
+      if (process.browser) {
+        let h = window.innerHeight
+        return {
+          'vheight': h
+        }
+      }
       return {
-        'vheight': h
+        'vheight': ''
       }
     }
   }

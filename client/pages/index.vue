@@ -8,7 +8,7 @@
         </div>
         <div class="middle">
           <div class="profile desktop">
-            <img class="rounded" alt="Profile picture showing Fredrik Beckius" :src="person.fields.image.fields.file.url + '?fit=fill&w=500&h=500'">
+            <img class="" alt="Profile picture showing Fredrik Beckius" :src="person.fields.image.fields.file.url + '?fit=fill&w=500&h=500'">
           </div>
           <div class="divider rounded"></div>
           <p class="intro_textbox">{{ introText }}</p>
@@ -20,7 +20,7 @@
               email fredrikbeckius on gmail.com<br>
               or connect with me on LinkedIn</p>
           </div>
-          <img class="mobile rounded" alt="Profile picture showing Fredrik Beckius" :src="person.fields.image.fields.file.url + '?fit=fill&w=500&h=500'">
+          <img class="mobile" alt="Profile picture showing Fredrik Beckius" :src="person.fields.image.fields.file.url + '?fit=fill&w=500&h=500'">
         </div>
       </div>
     </section>
