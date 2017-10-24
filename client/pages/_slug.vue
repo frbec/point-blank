@@ -24,7 +24,7 @@
                     ${image.fields.file.url}?w=1920&fit=fill 1920w`"
            sizes="50vw"
            class="">
-          <p>{{ image.fields.description }}</p>
+          <p>{{ image.fields.title }} — {{ image.fields.description }}</p>
         </div>
       </div>
     </section>
