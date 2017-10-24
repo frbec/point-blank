@@ -19,8 +19,8 @@
             <p class="compact-text">Call me on <span class="nowrap">+467 03 08 05 22</span><br>
               email fredrikbeckius on gmail.com<br>
               or connect with me on LinkedIn</p>
+            <img class="mobile" alt="Profile picture showing Fredrik Beckius" :src="person.fields.image.fields.file.url + '?fit=fill&w=500&h=500'">
           </div>
-          <img class="mobile" alt="Profile picture showing Fredrik Beckius" :src="person.fields.image.fields.file.url + '?fit=fill&w=500&h=500'">
         </div>
       </div>
     </section>

@@ -6,7 +6,7 @@
   height calc(100vh-2rem)
   overflow hidden
   display flex
-  @media screen and (max-width: 419px)
+  @media screen and (max-width: ($min-screen - 1px))
     height auto
     max-height 100vh
   img
@@ -21,7 +21,7 @@
     background $color1
     padding-left .5rem
     padding-right @padding-left
-    @media screen and (max-width: 419px)
+    @media screen and (max-width: ($min-screen - 1px))
       top 0
       left 0
       bottom initial
@@ -33,11 +33,9 @@
     background $color1
     padding-left .5rem
     padding-right @padding-left
-    @media screen and (max-width: 419px)
+    @media screen and (max-width: ($min-screen - 1px))
       left 0
       bottom 0
-    &:last-child
-      bottom 2.5rem
     span:after
       content ' — '
     span:last-child:after
@@ -52,13 +50,13 @@
   padding 1rem 1rem 4rem
   display flex
   justify-content center
-  @media screen and (max-width: 419px)
+  @media screen and (max-width: ($min-screen - 1px))
     flex-direction column
 
 .gallery-aside
   max-width 40%
   margin-left 1rem
-  @media screen and (max-width: 419px)
+  @media screen and (max-width: ($min-screen - 1px))
     max-width 100%
     margin-left 0
   img
