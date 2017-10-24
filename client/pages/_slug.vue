@@ -1,5 +1,6 @@
 <template>
   <main>
+    <header-nav></header-nav>
     <section class="hero">
       <img :src="post.fields.heroImage.fields.file.url + '?fit=fill&w=500&h=' + windowProperties.vheight"
            :srcset="`${post.fields.heroImage.fields.file.url}?w=500&h=${windowProperties.vheight}&fit=fill 500w,
@@ -34,6 +35,7 @@
 
 <script>
   import VueMarkdown from 'vue-markdown'
+  import headerNav from '~/components/header-nav.vue'
   import {createClient} from '~/plugins/contentful.js'
   const client = createClient()
 
@@ -59,7 +61,8 @@
         .catch(console.error)
     },
     components: {
-      VueMarkdown
+      VueMarkdown,
+      headerNav
     },
     data: function () {
       return {

@@ -1,6 +1,6 @@
 <template>
   <main>
-    <header><a href="#intro">About<img src="../assets/img/ic_about-me.svg"></a><a href="#portfolio">Portfolio<img src="../assets/img/ic_portfolio.svg"></a></header>
+    <header-nav></header-nav>
     <section id="intro" class="full-page">
       <div class="container">
         <div class="top">
@@ -39,6 +39,7 @@
 <script>
   import VueMarkdown from 'vue-markdown'
   import articlePreview from '~/components/article-preview.vue'
+  import headerNav from '~/components/header-nav.vue'
   import {createClient} from '~/plugins/contentful.js'
 
   const client = createClient()
@@ -67,7 +68,8 @@
     },
     components: {
       VueMarkdown,
-      'article-preview': articlePreview
+      'article-preview': articlePreview,
+      'header-nav': headerNav
     },
     data: function () {
       return {
