@@ -1,14 +1,15 @@
 <template>
   <main>
     <section class="hero">
-      <img :src="post.fields.heroImage.fields.file.url + '?fit=fill&w=500&h=' + vheight"
-           :srcset="`${post.fields.heroImage.fields.file.url}?w=500&h=${vheight}&fit=fill 500w,
-                    ${post.fields.heroImage.fields.file.url}?w=960&h=${vheight}&fit=fill 960w,
-                    ${post.fields.heroImage.fields.file.url}?w=1920&h=${vheight}&fit=fill 1920w`"
+      <img :src="post.fields.heroImage.fields.file.url + '?fit=fill&w=500&h=' + windowProperties.vheight"
+           :srcset="`${post.fields.heroImage.fields.file.url}?w=500&h=${windowProperties.vheight}&fit=fill 500w,
+                    ${post.fields.heroImage.fields.file.url}?w=960&h=${windowProperties.vheight}&fit=fill 960w,
+                    ${post.fields.heroImage.fields.file.url}?w=1920&h=${windowProperties.vheight}&fit=fill 1920w`"
            sizes="100vw"
            class="">
       <h1>{{ post.fields.title }}</h1>
       <p>{{ post.fields.description }}</p>
+      <p>{{ windowProperties.vheight }}</p>
       <!-- <p>Tags: <span v-for="tag in post.fields.tags">{{ tag }} </span></p> -->
     </section>
     <section class="content">
@@ -36,6 +37,14 @@
   import {createClient} from '~/plugins/contentful.js'
   const client = createClient()
 
+  let h = {
+    vheight: ''
+  }
+
+  if (process.browser) {
+    h.vheight = window.innerHeight
+  }
+
   export default {
     // `env` is available in the context object
     asyncData ({ env, params }) {
@@ -53,14 +62,8 @@
       VueMarkdown
     },
     data: function () {
-      if (process.browser) {
-        let h = window.innerHeight
-        return {
-          'vheight': h
-        }
-      }
       return {
-        'vheight': ''
+        windowProperties: h
       }
     }
   }
