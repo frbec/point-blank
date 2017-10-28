@@ -2,10 +2,10 @@
   <main>
     <header-nav></header-nav>
     <section class="hero">
-      <img :src="post.fields.heroImage.fields.file.url + '?fit=fill&w=500&h=' + windowProperties.vheight"
-           :srcset="`${post.fields.heroImage.fields.file.url}?w=500&h=${windowProperties.vheight}&fit=fill 500w,
-                    ${post.fields.heroImage.fields.file.url}?w=960&h=${windowProperties.vheight}&fit=fill 960w,
-                    ${post.fields.heroImage.fields.file.url}?w=1920&h=${windowProperties.vheight}&fit=fill 1920w`"
+      <img :src="post.fields.heroImage.fields.file.url + '?fit=fill&w=500'"
+           :srcset="`${post.fields.heroImage.fields.file.url}?w=500&fit=fill 500w,
+                    ${post.fields.heroImage.fields.file.url}?w=960&fit=fill 960w,
+                    ${post.fields.heroImage.fields.file.url}?w=1920&fit=fill 1920w`"
            sizes="100vw"
            class="">
       <h1>{{ post.fields.title }}</h1>
@@ -13,12 +13,10 @@
       <!-- <p>Tags: <span v-for="tag in post.fields.tags">{{ tag }} </span></p> -->
     </section>
     <section class="content">
-      <div>
-        <vue-markdown>{{ post.fields.body }}</vue-markdown>
-      </div>
+      <vue-markdown class="article-body">{{ post.fields.body }}</vue-markdown>
       <div class="gallery-aside">
         <div v-for="image in post.fields.gallery">
-          <img :src="image.fields.file.url + '?fit=fill&w=500&h=333'"
+          <img :src="image.fields.file.url + '?fit=fill&w=500'"
            :srcset="`${image.fields.file.url}?w=500&fit=fill 500w,
                     ${image.fields.file.url}?w=960&fit=fill 960w,
                     ${image.fields.file.url}?w=1920&fit=fill 1920w`"
