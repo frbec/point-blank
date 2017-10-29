@@ -15,15 +15,15 @@
     <section class="content">
       <vue-markdown class="article-body">{{ post.fields.body }}</vue-markdown>
       <div class="gallery-aside">
-        <div v-for="image in post.fields.gallery">
+        <figure v-for="image in post.fields.gallery">
           <img :src="image.fields.file.url + '?fit=fill&w=500'"
            :srcset="`${image.fields.file.url}?w=500&fit=fill 500w,
                     ${image.fields.file.url}?w=960&fit=fill 960w,
                     ${image.fields.file.url}?w=1920&fit=fill 1920w`"
            sizes="50vw"
            class="">
-          <p>{{ image.fields.title }} — {{ image.fields.description }}</p>
-        </div>
+          <figcaption>{{ image.fields.title }} — {{ image.fields.description }}</figcaption>
+        </figure>
       </div>
     </section>
     <footer>© Fredrik Beckius 2017</footer>
