@@ -72,11 +72,8 @@ html
 
 body
   background white
-  margin-top 2rem
-  margin-bottom 0
   @media screen and (orientation: portrait) and (max-width: 700px)
     margin-bottom 3rem
-    margin-top 0
 
 h1, h2, h3, h4, h5, h6
   font-family 'Zilla Slab', serif
@@ -96,13 +93,15 @@ ul
 nav
   position fixed
   top 0
+  left 50%
   z-index 99
-  width 100%
+  width 14rem
+  margin-left -(@width / 2)
+  border-radius 0 0 10px 10px
   height 2rem
-  display flex
-  justify-content center
-  align-items center
-  background rgba(255,255,255,1)
+  padding-top .3rem
+  text-align center
+  background rgba(255,255,255,0.95)
   @media screen and (orientation: portrait) and (max-width: 700px)
     top initial
     bottom 0
