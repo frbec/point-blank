@@ -1,7 +1,7 @@
 // Article page
 
 img
-  cursor zoom-in
+  cursor zoom-in 
 
 .hero
   position relative
@@ -88,3 +88,20 @@ img
     list-style-type none
     margin 0
     padding 0 0.5rem
+
+.viewbox
+  position fixed
+  left 50%
+  transform translateX(-50%)
+  z-index 99
+  height 100vh !important
+  width auto !important
+  padding 0 !important
+  margin 0 !important
+  cursor zoom-out
+  &:after
+    position fixed
+    z-index 98
+    width 100vw
+    height 100vh
+    background rgba(black,0.8)

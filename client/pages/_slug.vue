@@ -2,8 +2,7 @@
   <main>
     <header-nav></header-nav>
     <section class="hero">
-      <img @click.left="expandImage"
-           :src="post.fields.heroImage.fields.file.url + '?fit=fill&w=500'"
+      <img :src="post.fields.heroImage.fields.file.url + '?fit=fill&w=500'"
            :srcset="`${post.fields.heroImage.fields.file.url}?w=500&fit=fill 500w,
                     ${post.fields.heroImage.fields.file.url}?w=960&fit=fill 960w,
                     ${post.fields.heroImage.fields.file.url}?w=1920&fit=fill 1920w`"
@@ -17,8 +16,10 @@
       <vue-markdown class="article-body">{{ post.fields.body }}</vue-markdown>
       <div class="gallery-aside">
         <figure v-for="image in post.fields.gallery">
-          <img :src="image.fields.file.url + '?fit=fill&w=500'"
-           :srcset="`${image.fields.file.url}?w=500&fit=fill 500w,
+          <img @click.left="imageClick"
+               v-bind:class="{ viewbox: isActive }"
+               :src="image.fields.file.url + '?fit=fill&w=500'"
+               :srcset="`${image.fields.file.url}?w=500&fit=fill 500w,
                     ${image.fields.file.url}?w=960&fit=fill 960w,
                     ${image.fields.file.url}?w=1920&fit=fill 1920w`"
            sizes="50vw"
@@ -36,7 +37,7 @@
   import headerNav from '~/components/header-nav.vue'
   import {createClient} from '~/plugins/contentful.js'
   const client = createClient()
-
+  
   export default {
     // `env` is available in the context object
     asyncData ({ env, params }) {
@@ -54,7 +55,16 @@
       VueMarkdown,
       headerNav
     },
-    data: {
+    methods: {
+      imageClick: function () {
+        this.isActive = !this.isActive
+        console.log('toggle')
+      }
+    },
+    data: function () {
+      return {
+        isActive: false
+      }
     }
   }
 </script>
