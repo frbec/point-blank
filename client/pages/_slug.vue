@@ -2,7 +2,8 @@
   <main>
     <header-nav></header-nav>
     <section class="hero">
-      <img :src="post.fields.heroImage.fields.file.url + '?fit=fill&w=500'"
+      <img @click.left="expandImage"
+           :src="post.fields.heroImage.fields.file.url + '?fit=fill&w=500'"
            :srcset="`${post.fields.heroImage.fields.file.url}?w=500&fit=fill 500w,
                     ${post.fields.heroImage.fields.file.url}?w=960&fit=fill 960w,
                     ${post.fields.heroImage.fields.file.url}?w=1920&fit=fill 1920w`"
@@ -36,14 +37,6 @@
   import {createClient} from '~/plugins/contentful.js'
   const client = createClient()
 
-  let h = {
-    vheight: ''
-  }
-
-  if (process.browser) {
-    h.vheight = window.innerHeight
-  }
-
   export default {
     // `env` is available in the context object
     asyncData ({ env, params }) {
@@ -61,10 +54,7 @@
       VueMarkdown,
       headerNav
     },
-    data: function () {
-      return {
-        windowProperties: h
-      }
+    data: {
     }
   }
 </script>
