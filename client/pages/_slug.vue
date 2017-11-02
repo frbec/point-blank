@@ -2,13 +2,14 @@
   <main>
     <header-nav></header-nav>
     <section class="hero">
-      <img @click.left="expandImage"
-           :src="post.fields.heroImage.fields.file.url + '?fit=fill&w=500'"
-           :srcset="`${post.fields.heroImage.fields.file.url}?w=500&fit=fill 500w,
-                    ${post.fields.heroImage.fields.file.url}?w=960&fit=fill 960w,
-                    ${post.fields.heroImage.fields.file.url}?w=1920&fit=fill 1920w`"
-           sizes="100vw"
-           class="">
+      <a :href="'//' + post.fields.heroImage.fields.file.url"
+         class="hero-image">
+        <img :src="post.fields.heroImage.fields.file.url + '?fit=fill&w=500'"
+             :srcset="`${post.fields.heroImage.fields.file.url}?w=500&fit=fill 500w,
+                      ${post.fields.heroImage.fields.file.url}?w=960&fit=fill 960w,
+                      ${post.fields.heroImage.fields.file.url}?w=1920&fit=fill 1920w`"
+             sizes="100vw">
+      </a>
       <h1>{{ post.fields.title }}</h1>
       <p>{{ post.fields.description }}</p>
       <!-- <p>Tags: <span v-for="tag in post.fields.tags">{{ tag }} </span></p> -->
@@ -17,12 +18,14 @@
       <vue-markdown class="article-body">{{ post.fields.body }}</vue-markdown>
       <div class="gallery-aside">
         <figure v-for="image in post.fields.gallery">
-          <img :src="image.fields.file.url + '?fit=fill&w=500'"
-           :srcset="`${image.fields.file.url}?w=500&fit=fill 500w,
-                    ${image.fields.file.url}?w=960&fit=fill 960w,
-                    ${image.fields.file.url}?w=1920&fit=fill 1920w`"
-           sizes="50vw"
-           class="">
+          <a :href="'//' + image.fields.file.url">
+            <img :src="image.fields.file.url + '?fit=fill&w=500'"
+             :srcset="`${image.fields.file.url}?w=500&fit=fill 500w,
+                      ${image.fields.file.url}?w=960&fit=fill 960w,
+                      ${image.fields.file.url}?w=1920&fit=fill 1920w`"
+             sizes="50vw"
+             class="">
+          </a>
           <figcaption>{{ image.fields.title }} — {{ image.fields.description }}</figcaption>
         </figure>
       </div>
